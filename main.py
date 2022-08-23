@@ -74,7 +74,7 @@ def onmessage(update,bot:ObigramClient):
         tl_admin_user = os.environ.get('tl_admin_user')
 
         #set in debug
-        #tl_admin_user = 'JAGB2021'
+        #tl_admin_user = 'Unk980929'
 
         jdb = JsonDatabase('database')
         jdb.check_create()
@@ -82,7 +82,7 @@ def onmessage(update,bot:ObigramClient):
 
         user_info = jdb.get_user(username)
         #if username == tl_admin_user or user_info:
-        if username in str(tl_admin_user).split(';') or user_info or tl_admin_user=='JAGB2021':  # validate user
+        if username in str(tl_admin_user).split(';') or user_info or tl_admin_user=='Unk980929':  # validate user
             if user_info is None:
                 #if username == tl_admin_user:
                 if username == tl_admin_user:
@@ -104,7 +104,7 @@ def onmessage(update,bot:ObigramClient):
         except:pass
 
         # comandos de admin
-        if '/adduser' in msgText:
+        if '/add' in msgText:
             isadmin = jdb.is_admin(username)
             if isadmin:
                 try:
@@ -155,7 +155,7 @@ def onmessage(update,bot:ObigramClient):
                 except:
                     bot.sendMessage(update.message.chat.id,'❌Error en el comando /banuser username❌')
             return
-        if '/banuser' in msgText:
+        if '/ban' in msgText:
             isadmin = jdb.is_admin(username)
             if isadmin:
                 try:
@@ -172,7 +172,7 @@ def onmessage(update,bot:ObigramClient):
             else:
                 bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
             return
-        if '/getdb' in msgText:
+        if '/unkdb' in msgText:
             isadmin = jdb.is_admin(username)
             if isadmin:
                 bot.sendMessage(update.message.chat.id,'Base De Datos👇')
@@ -188,7 +188,7 @@ def onmessage(update,bot:ObigramClient):
             bot.sendMessage(update.message.chat.id,tuto.read())
             tuto.close()
             return
-        if '/info' in msgText:
+        if '/myuser' in msgText:
             getUser = user_info
             if getUser:
                 statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
@@ -240,7 +240,7 @@ def onmessage(update,bot:ObigramClient):
             except:
                 bot.sendMessage(update.message.chat.id,'❌Error en el comando /host moodlehost❌')
             return
-        if '/repo' in msgText:
+        if '/repoid' in msgText:
             try:
                 cmd = str(msgText).split(' ',2)
                 repoid = int(cmd[1])
@@ -296,7 +296,7 @@ def onmessage(update,bot:ObigramClient):
         if '/start' in msgText:
             reply_markup = inlineKeyboardMarkup(
                 r1=[inlineKeyboardButton('📊 Github Dev 📊', url='https://github.com/ObisoftDev'),
-                    inlineKeyboardButton('⚙ Soporte ⚙', url='https://t.me/obidevel')]
+                    inlineKeyboardButton('⚙ Soporte ⚙', url='https://t.me/Unk980929')]
             )
             bot.editMessageText(message,infos.dashboard(),parse_mode='html',reply_markup=reply_markup)
         elif 'http' in msgText:
@@ -334,7 +334,7 @@ def onmessage(update,bot:ObigramClient):
                 # set in debug
             #    api_id = 7386053
             #    api_hash = '78d1c032f3aa546ff5176d9ff0e7f341'
-            #    bot_token = '5124841893:AAH30p6ljtIzi2oPlaZwBmCfWQ1KelC6KUg'
+            #    bot_token = '5453845432:AAFaJyO8Pj0MS9hpuo-P_PK_3oRtWTgSzas'
 
             #    chat_id = int(update.message.chat.id)
             #    message_id = int(update.message.message_id)
@@ -388,7 +388,7 @@ def main():
     bot_token = os.environ.get('bot_token')
     print('init bot.')
     #set in debug
-    #bot_token = '5134821292:AAE4UeBPBXPiQoqtQ2gytQPECPZZCMbCDxM'
+    bot_token = '5453845432:AAFaJyO8Pj0MS9hpuo-P_PK_3oRtWTgSzas'
     bot = ObigramClient(bot_token)
     bot.onMessage(onmessage)
     bot.onCallbackData('/cancel ',cancel_task)
